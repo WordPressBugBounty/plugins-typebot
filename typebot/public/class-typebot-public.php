@@ -40,8 +40,9 @@ class Typebot_Public
 
   function typebot_script()
   {
-    $lib_version = get_option('lib_version') !== null && get_option('lib_version') !== ''  ? get_option('lib_version') : '0.3';
-    echo '<script type="module">import Typebot from "https://cdn.jsdelivr.net/npm/@typebot.io/js@'.$lib_version.'/dist/web.js";';
+    define('TYPEBOT_DEFAULT_LIB_VERSION', '0.3');
+    $lib_version = ($version = get_option('lib_version')) ? $version : TYPEBOT_DEFAULT_LIB_VERSION;
+    echo '<script type="module">import Typebot from "https://cdn.jsdelivr.net/npm/@typebot.io/js@'.$lib_version.'/dist/web";';
     if (
       get_option('excluded_pages') !== null &&
       get_option('excluded_pages') !== ''
@@ -60,7 +61,7 @@ class Typebot_Public
     if (get_option('init_snippet') && get_option('init_snippet') !== '') {
       echo 'if(!typebotExcludePaths || typebotExcludePaths.every((path) => {
           let [excludePath, excludeSearch] = path.trim().split("?");
-          const excludeSearchParams = excludeSearch ? new URLSearchParams(excludeSearch) : null; 
+          const excludeSearchParams = excludeSearch ? new URLSearchParams(excludeSearch) : null;
 					let windowPath = window.location.pathname;
           let windowSearchParams = window.location.search.length > 0 ? new URLSearchParams(window.location.search) : null;
 					if (excludePath.endsWith("*")) {
@@ -75,7 +76,7 @@ class Typebot_Public
 					}
 					if (windowPath.endsWith("/")) {
 						windowPath = windowPath.slice(0, -1);
-					}    
+					}
           if(excludeSearchParams){
             if(!windowSearchParams) return true
             return windowPath !== excludePath || !Array.from(excludeSearchParams.keys()).every((key) => excludeSearchParams.get(key) === "*" || (excludeSearchParams.get(key) === windowSearchParams.get(key)));
