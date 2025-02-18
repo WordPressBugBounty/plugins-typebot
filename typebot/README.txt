@@ -5,7 +5,7 @@ Requires at least: 5.0
 Tested up to: 6.7.1
 License: GPL 2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
-Stable Tag: 4.1.0
+Stable Tag: 4.2.0
 
 == Short Description ==
 Create advanced chat experiences without coding
@@ -19,7 +19,7 @@ Collect 4x more responses with conversational apps using Typebot.
 
 This plugin relies on Typebot which is a tool that allows you to create conversational forms and directly integrate them on your Wordpress site.
 💁‍♂️ More information about Typebot: https://www.typebot.io/
-👨🏼‍💻 How Typebot handles collected data: https://www.typebot.io/privacy-policies
+👨🏼‍💻 How Typebot handles collected data: https://www.typebot.io/privacy-policy
 
 == Installation ==
 1. Add the plugin folder to the /wp-content/plugins/ directory
@@ -27,6 +27,9 @@ This plugin relies on Typebot which is a tool that allows you to create conversa
 3. Activate your Typebot with the "Typebot" admin button located in the sidebar
 
 == Changelog ==
+= 4.2.0 =
+* Add ws_host parameter to the shortcode
+
 = 4.1.0 =
 * Compute excluded path on server side
 * Attempt to fix importmap concurrency issue
